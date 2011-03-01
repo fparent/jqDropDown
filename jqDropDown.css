@@ -1,0 +1,78 @@
+/*********************************************************************
+
+jQuery UI DropDown v1.0
+http://uraniuminteractive.com
+
+Copyright 2011, Frank Parent for Uranium Interactive
+Free to use and abuse under the MIT license.
+http://www.opensource.org/licenses/mit-license.php
+
+**********************************************************************/
+
+ /* The dropdown container */
+.ddContainer, .ddContainer a {
+	font:normal 13px Helvetica;
+	color: #000;
+}
+
+.ddContainer a {
+	display:block;
+	cursor:default;
+	text-decoration:none;
+ }
+ 
+ .ddOptionList li a {
+	background-color:#fff !important;
+	padding-right:4px;
+}
+ 
+ .ddContainer  a.selected {
+	background-color: #3399ff !important;
+	color: #fff !important;
+}
+ 
+ /* The dropdown toggle button */
+.ddToggle {
+	height:14px;
+	position:relative;
+	display:block;
+	border-top:solid 1px #abadb3 !important;
+	border-right:solid 1px #dbdfe6 !important;
+	border-bottom:solid 1px #e3e9ef !important;
+	border-left:solid 1px #e2e3ea !important;
+	padding:2px 18px 2px 4px;
+	background-color:#fff;
+}
+
+/* The dropdown arrow in the toggle box */
+.ddToggle span {
+	width:0; height:0;
+	border-color:black white white;
+	border-style:solid;
+	border-width:4px;
+	display:block;
+	position:absolute;
+	top:8px; right:4px;
+}
+
+/* The dropdown option list */
+.ddOptionList {
+	background-color:#fff;
+	border-top:solid 1px #b2b2b2  !important;
+	border-right:solid 1px #000 !important;
+	border-bottom:solid 1px #000 !important;
+	border-left:solid 1px #b2b2b2 !important;
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	position:absolute;
+	left:0;
+	z-index:999;
+}
+			
+.ddOptionList li.optgroup {
+	font-style:italic;
+	font-weight:bold;
+	cursor:default;
+}
+
