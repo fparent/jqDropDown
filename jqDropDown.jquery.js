@@ -309,7 +309,7 @@ http://www.opensource.org/licenses/mit-license.php
 	function ApplyStyle( $container, lisWidth, settings ) {
 		var 	$list = $container.find('ul:eq(0)'),
 			$listItems = $container.find('ul > li > a'),
-			
+
 			// Data about the toggle hyperlink
 			$toggleLink = $container.find('a:eq(0)'),
 			toggleLinkPadding = parseInt($toggleLink.css("padding-left"), 10) + parseInt($toggleLink.css("padding-right"), 10),
@@ -343,21 +343,45 @@ http://www.opensource.org/licenses/mit-license.php
 	
 	// Calculate the height of the list compared to the viewport's height and update the direction it opens
 	function UpdateListDirection( $toggleLink, $list, settings ) {
-		var topPos, toggleLinkPadding, borderWidth;
+		var topPos, toggleLinkPadding, borderWidth,
+		
+		// Cache all the select element of the page
+		$select = $('select'),
+		counter,
+		direction;
 		
 		// Calculate the padding and borders of the toggle hyperlink to position list correctly
 		toggleLinkPadding = parseInt($toggleLink.css("padding-top"), 10) + parseInt($toggleLink.css("padding-bottom"), 10) || 0;
 		borderWidth = parseInt($toggleLink.css("border-top-width"), 10) + parseInt( $toggleLink.css("border-bottom-width"), 10) || 0;
 		
-		if( settings.direction === 'up' || ( $toggleLink.offset().top + $list.height() + 20) > $(window).height() + $(window).scrollTop() ) {
+		if( direction === 'up' || ( $toggleLink.offset().top + $list.height() + 20) > $(window).height() + $(window).scrollTop() ) {
 			topPos = -($list.height() + toggleLinkPadding - borderWidth);
+			direction = 'up';
 		} else {
 			topPos = $toggleLink.height() + toggleLinkPadding + borderWidth;
+			direction = 'down';
 		}
 		
 		$list.css({
 			top :  topPos
 		});
+		
+		// If IE6 or IE7, fix the overlay of the lists close to each other by adding dynamic z-index to the containers based on the list direction
+		if( $.browser.msie && $.browser.version === '6.0' || $.browser.version === '7.0'  ) {
+
+			// Start the container index correctly based on the the list direction
+			direction === 'up' ? counter =  0 : counter = $select.length;
+			
+			$select.each( function() {
+				$(this).next('div').css({ 'z-index': counter });
+				
+				if( direction === 'up' ) {
+					counter += 1;
+				} else {
+					counter -= 1;
+				}
+			});
+		}
 	}
 	
 	
