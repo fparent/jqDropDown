@@ -42,6 +42,7 @@ http://www.opensource.org/licenses/mit-license.php
 	border-left:solid 1px #e2e3ea !important;
 	padding:2px 18px 2px 4px;
 	background-color:#fff;
+	z-index:1;
 }
 
 /* The dropdown arrow in the toggle box */
